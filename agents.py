@@ -1,16 +1,17 @@
 from crewai import Agent,LLM
 from dotenv import load_dotenv
-from tools import scrape_website_tool
+from tools import scrape_website_tool, serper_tool
 import os
 
 load_dotenv()
 
 llm = LLM(
-    model="gpt-4o-mini",
+    model="gpt-4",
     api_key=os.getenv("OPENAI_API_KEY"),
+    temperature=0.3
 )
 CompanyWebsiteAnalyst = Agent(
-    role="Senior Analyst specializing in company analysis",
+    role="Senior Company Analyst",
     goal="Extract {company}'s value proposition, target audience, key products and services, and unique selling proposition.]",
     backstory=("You are a senior analyst specializing in company analysis."
     "you're detail oriented and focused on extracting the most relevant information from the company's website."),
@@ -18,4 +19,24 @@ CompanyWebsiteAnalyst = Agent(
     tools=[scrape_website_tool],
     llm=llm,
     verbose=True
+)
+
+MarketNewsResearcher = Agent(
+    role="Market News Researcher",
+    goal=(
+        "To find credible and up-to-date external information about a given company based on the input provided by the Senior Company Analyst. "
+        "This includes summarizing recent news articles, public signals, or press mentions, "
+        "and identifying 1-2 direct competitors based on the companys product and market."
+    ),    
+    backstory=(
+        "You are a highly skilled Market News Researcher working in a venture capital firm. "
+        "Your mission is to assist investment analysts by gathering the most relevant and recent external data "
+        "about startups under evaluation. You specialize in finding news articles, funding rounds, "
+        "market trends, and identifying key competitors using web search tools like Serper. "
+        "You do not make assumptions or speculate. Your reports must be concise, accurate, and verifiable."
+    ),
+    allow_delegation=False,
+    tools=[serper_tool],
+    verbose=True,
+    llm=llm
 )

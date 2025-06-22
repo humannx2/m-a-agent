@@ -1,8 +1,7 @@
-from crewai import Crew
-from tasks import scrape_website_task
-from agents import CompanyWebsiteAnalyst
+from crewai import Crew,Process
+from tasks import scrape_website_task,market_news_task
+from agents import CompanyWebsiteAnalyst,MarketNewsResearcher
 from dotenv import load_dotenv
-import os
 
 # load the environment variables
 load_dotenv()
@@ -16,8 +15,9 @@ print("Starting the crew...")
 
 # create the crew
 crew = Crew(
-    agents=[CompanyWebsiteAnalyst],
-    tasks=[scrape_website_task],
+    agents=[CompanyWebsiteAnalyst,MarketNewsResearcher],
+    tasks=[scrape_website_task,market_news_task],
+    process=Process.sequential,
     verbose=True,
 )
 

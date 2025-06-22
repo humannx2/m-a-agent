@@ -6,6 +6,11 @@ class WebsiteData(BaseModel):
     target_customer: str
     key_product_features: List[str]
 
+class MarketAnalysis(BaseModel):
+    news_summary: str
+    competitors: List[str]
+
+
 
 
 
