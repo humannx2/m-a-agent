@@ -10,6 +10,11 @@ llm = LLM(
     api_key=os.getenv("OPENAI_API_KEY"),
     temperature=0.3
 )
+
+r_llm = LLM(
+    model="o3-mini",
+    api_key=os.getenv("OPENAI_API_KEY"),
+)
 CompanyWebsiteAnalyst = Agent(
     role="Senior Company Analyst",
     goal="Extract {company}'s value proposition, target audience, key products and services, and unique selling proposition.]",
@@ -39,4 +44,19 @@ MarketNewsResearcher = Agent(
     tools=[serper_tool],
     verbose=True,
     llm=llm
+)
+
+LeadInvestmentAnalyst = Agent(
+    role="Lead Investment Analyst",
+    goal="Synthesize a structured Investment Memo based on information from Senior Company Analyst and Market News Researcher.",
+    backstory=(
+        "You are a senior investment analyst at a venture capital firm. "
+        "You are known for your analytical clarity and objective decision-making. "
+        "You receive preprocessed research from two junior analysts: one who studied the company's website, "
+        "and another who researched the market landscape. Based on these findings, you deliver final investment recommendations "
+        "in a standardized format."
+    ),
+    allow_delegation=False,
+    verbose=True,
+    llm=r_llm
 )

@@ -1,7 +1,7 @@
 from crewai import Task
-from agents import CompanyWebsiteAnalyst, MarketNewsResearcher
+from agents import CompanyWebsiteAnalyst, MarketNewsResearcher, LeadInvestmentAnalyst
 from tools import scrape_website_tool, serper_tool
-from models import WebsiteData, MarketAnalysis
+from models import WebsiteData, MarketAnalysis, FullInvestmentMemo
 
 
 scrape_website_task = Task(
@@ -23,7 +23,7 @@ market_news_task = Task(
         "- Recent news, announcements, or press coverage about the company (e.g., product launches, funding rounds, partnerships, controversies).\n"
         "- Identify and list 1-2 direct competitors offering similar products or targeting similar customers.\n"
         "How to proceed:\n"
-        "- Use only credible sources (e.g., TechCrunch, Crunchbase, Forbes, company blogs, LinkedIn, etc.).\n"
+        "- Use only credible sources.\n"
         "- Prioritize recent results (within the last 6 months).\n"
         "- Do NOT invent or speculate. If a certain piece of data isn't found, clearly say so.\n\n"
     ),
@@ -33,6 +33,23 @@ market_news_task = Task(
     tools=[serper_tool],
     output_pydantic=MarketAnalysis
 )
+
+memo_synthesis_task = Task(
+    description=(
+        "Your task is to create a structured investment memo about {company} based of the information you recieved from Senior Company Analyst and Market News Researcher.\n\n"
+        "Guidelines:\n"
+        "- Be objective and concise.\n"
+        "- Highlight market opportunity, product strength, and possible risks.\n"
+        "- Do not make up information — only base your judgment on the provided structured inputs.\n"
+    ),
+    expected_output=("A detailed Investment Memo with all the company details like"
+    "Value Proposition, Target Customer, Key Product Features"
+    "news_summary, competitors"
+    "and final verdict on Investing in the company with a confidence rating between 1-10, 1 is lowest, while 10 is highest"),
+    agent=LeadInvestmentAnalyst,
+    output_pydantic=FullInvestmentMemo
+)
+
 
 
 
