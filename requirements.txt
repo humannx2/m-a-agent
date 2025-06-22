@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+crewai
+openai
+requests
+python-dotenv
