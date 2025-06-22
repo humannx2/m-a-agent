@@ -1,0 +1,26 @@
+{
+    "company_name": "Pepsi",
+    "website_analysis": {
+      "value_proposition": "Pepsi’s value proposition centers on delivering a unique, refreshing beverage experience that blends taste with cultural and lifestyle relevance. Leveraging its longstanding reputation and dynamic marketing, Pepsi differentiates itself with high-quality products, emotional connections through advertising, sponsorships, and innovative trends.",
+      "target_customer": "Pepsi targets young adults, specifically Millennials and Generation Z, who are attracted to trend-forward, culturally resonant experiences. It also appeals to urban and suburban consumers who value convenience, consistency, and product innovation.",
+      "key_product_features": [
+        "Signature crisp, sweeter taste profile",
+        "Highly carbonated refreshing mouthfeel",
+        "Variety of products including Diet Pepsi, Pepsi Zero Sugar, and limited editions",
+        "Modern packaging design appealing to a youthful audience",
+        "Strategic distribution for widespread availability"
+      ]
+    },
+    "market_analysis": {
+      "news_summary": "1. PepsiCo and F1 ACADEMY launched a groundbreaking partnership to fuel the future of women's racing. 2. PepsiCo announced the timing and availability of their second-quarter 2025 financial results. 3. PepsiCo refined their sustainability goals, expanding their regenerative agriculture goal to 10 million acres by 2030. 4. PepsiCo entered into a definitive agreement to acquire poppi, a fast-growing prebiotic soda brand, for $1.95 billion. 5. PepsiCo completed the acquisition of Garza Food Ventures LLC, dba Siete Foods (Siete), for $1.2 billion.",
+      "competitors": [
+        "Coca-Cola",
+        "Monster Beverage",
+        "Keurig Dr Pepper"
+      ]
+    },
+    "investment_memo": {
+      "final_verdict": "Pepsi exhibits strong market positioning through strategic acquisitions, cultural ties through partnerships, commitment to sustainability, and product innovation. The company's robust brand presence, diverse product offerings, and proactive market engagement strategies provide a reliable growth trajectory.",
+      "confidence_score": 8.5
+    }
+  }

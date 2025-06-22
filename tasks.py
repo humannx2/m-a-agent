@@ -47,7 +47,8 @@ memo_synthesis_task = Task(
     "news_summary, competitors"
     "and final verdict on Investing in the company with a confidence rating between 1-10, 1 is lowest, while 10 is highest"),
     agent=LeadInvestmentAnalyst,
-    output_pydantic=FullInvestmentMemo
+    output_pydantic=FullInvestmentMemo,
+    output_file='investment_memo.json'
 )
 
 

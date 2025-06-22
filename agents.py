@@ -58,5 +58,7 @@ LeadInvestmentAnalyst = Agent(
     ),
     allow_delegation=False,
     verbose=True,
+    reasoning=True,
+    max_reasoning_attempts=2,
     llm=r_llm
 )

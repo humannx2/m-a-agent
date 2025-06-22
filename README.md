@@ -31,7 +31,7 @@ graph TD
     E --> F[Output: <br/>Investment Memo];
     
     style A fill:#f9f,stroke:#333,stroke-width:2px
-    style F fill:#ccf,stroke:#333,stroke-width:2px
+    style F fill:#88f,stroke:#333,stroke-width:2px
 ```
 
 ## Setup and Installation
@@ -58,9 +58,37 @@ graph TD
 
 4.  **Run the application:**
     ```bash
-    python main.py
+    uvicorn main:app --reload
     ```
-    The application will prompt you to enter the company name and website URL in the console.
+    The application will start, and you can access the API at `http://localhost:8000`.
+
+## API Usage
+
+Once the application is running, you can interact with it through its API endpoints.
+
+### Interactive API Docs
+
+FastAPI provides automatic interactive API documentation. You can access it by navigating to:
+
+*   **Swagger UI**: `http://localhost:8000/docs`
+*   **ReDoc**: `http://localhost:8000/redoc`
+
+From the Swagger UI, you can test the `/analyse` endpoint directly in your browser.
+
+### Using cURL
+
+You can also send a request using `curl` from your terminal:
+
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/analyse' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "company": "OpenAI",
+  "website_url": "https://openai.com"
+}'
+```
 
 ## Design Choices & Trade-offs
 
