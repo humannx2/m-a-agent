@@ -30,7 +30,7 @@ graph TD
 
     E --> F[Output: <br/>Investment Memo];
     
-    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style A fill:#33f,stroke:#333,stroke-width:2px
     style F fill:#88f,stroke:#333,stroke-width:2px
 ```
 
